@@ -7,6 +7,10 @@ export default function Size({maxdecor}) {
       
 const namearr = [{name:"Flower",id:0},{name:"Star",id:1},{name:"Diamond",id:2},{name:"Heart",id:3}]
 const [currentvalueArr, setcurrentvalueArr] = useState([0,0,0,0]);
+var [remaining, setremaining] = useState(maxdecor)
+const [curValue, setcurValue] = useState([0,0,0,0])
+const [DecorArr,  setDecorArr] = useState(setrange(maxdecor,curValue));
+
 const setrange = (maxdecor,curValue) => {
   var temparr = [[], [], [], []];
   let sum = 0;
@@ -19,13 +23,10 @@ const setrange = (maxdecor,curValue) => {
   return temparr;
 };
 
-var [remaining, setremaining] = useState(maxdecor)
-
-const [curValue, setcurValue] = useState([0,0,0,0])
-const [DecorArr,  setDecorArr] = useState(setrange(maxdecor,curValue));
 
 
-const Trii = (e) => {
+
+const handlevaluechange = (e) => {
     curValue[e.target.id] =parseInt(e.target.value);
     setDecorArr(setrange(maxdecor,curValue))
     let sum = 0;
@@ -63,7 +64,7 @@ useEffect(() => {
       {
       namearr.map(((nam) =>
  <Decoration  key={nam.id} name={nam.name}  DecorArr={DecorArr[nam.id]}  selectid={nam.id} 
-  Trii={Trii}  currentvalueArr={currentvalueArr} />
+ handlevaluechange={ handlevaluechange}  currentvalueArr={currentvalueArr} />
       ))}
         <div>
             <h3>{remaining} reamaining </h3>

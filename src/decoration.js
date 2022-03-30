@@ -1,7 +1,7 @@
 import React from 'react'
 
 
-export const Decoration = ({name,selectid,DecorArr,Trii,currentvalueArr}) => {
+export const Decoration = ({name,selectid,DecorArr, handlevaluechange,currentvalueArr}) => {
 
  
 
@@ -11,7 +11,7 @@ export const Decoration = ({name,selectid,DecorArr,Trii,currentvalueArr}) => {
     <div>
     <span>{name}</span>
      
-    <select id={selectid}  value={currentvalueArr[selectid]} onChange={(e) => Trii(e)}>
+    <select id={selectid}  value={currentvalueArr[selectid]} onChange={(e) =>  handlevaluechange(e)}>
    
             {DecorArr.map((decor, index) => (
                         
